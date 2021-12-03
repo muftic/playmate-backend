@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      pet.belongsTo(models.user);
+
       pet.belongsToMany(models.pet, {
         through: "likes",
         as: "giverId",
@@ -24,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       age: DataTypes.INTEGER,
       gender: DataTypes.STRING,
       species: DataTypes.STRING,
+      userId: DataTypes.STRING,
     },
     {
       sequelize,
