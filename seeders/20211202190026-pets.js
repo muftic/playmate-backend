@@ -10,7 +10,6 @@ module.exports = {
           age: 2,
           gender: "male",
           species: "Dog",
-          userId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -19,7 +18,38 @@ module.exports = {
           age: 4,
           gender: "female",
           species: "Dog",
-          userId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Toffy",
+          age: 6,
+          gender: "female",
+          species: "Dog",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Luffy",
+          age: 8,
+          gender: "male",
+          species: "Cat",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Doggy",
+          age: 15,
+          gender: "female",
+          species: "Dog",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Tabby",
+          age: 8,
+          gender: "female",
+          species: "Cat",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -29,6 +59,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("pets", null, {});
+    await queryInterface.bulkDelete("users", null, {});
   },
 };

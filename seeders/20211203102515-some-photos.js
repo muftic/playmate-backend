@@ -24,20 +24,26 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          url: "https://res.cloudinary.com/muftic/image/upload/v1638527256/TinPet/creative-1-Pair-Pet-Stockings-Black-Sexy-Dog-Net-Socks-Funny-dogs-Clothing-for-halloween-party.jpg_q50_jeccks.jpg",
-          petId: 2,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          url: "https://res.cloudinary.com/muftic/image/upload/v1638527257/TinPet/Lovely-Pet-Dog-Dress-French-Bulldog-Skirt-Summer-Clothes-For-Small-Medium-Dogs-Puppy-Chihuahua-Yorkie_mv8qw7.webp",
+          url: "https://res.cloudinary.com/muftic/image/upload/v1638527257/TinPet/grumpy_cat_ynk8pm.jpg",
           petId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          url: "https://res.cloudinary.com/muftic/image/upload/v1638541944/TinPet/20170301-DoggyDiarrhea_1200x630_yfrrnb.jpg",
-          petId: 3,
+          url: "https://res.cloudinary.com/muftic/image/upload/v1638527257/TinPet/grumpy_cat_ynk8pm.jpg",
+          petId: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          url: "https://res.cloudinary.com/muftic/image/upload/v1638527257/TinPet/grumpy_cat_ynk8pm.jpg",
+          petId: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          url: "https://res.cloudinary.com/muftic/image/upload/v1638527257/TinPet/grumpy_cat_ynk8pm.jpg",
+          petId: 6,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -47,6 +53,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("users", null, {});
+    await queryInterface.bulkDelete("photos", null, {});
   },
 };
