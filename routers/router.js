@@ -6,14 +6,12 @@ const router = new Router();
 const auth = require("../auth/middleware");
 
 router.get("/pets", async (req, res) => {
-  let likes = await Like.findAll({
-    include: [
-      {
-        model: Pet,
-        as: `receiver`,
-      },
-    ],
-  });
+  let pets = await Pet.findAll({});
+  return res.status(200).send({ message: "Success!", pets });
+});
+
+router.get("/likes", async (req, res) => {
+  let likes = await Like.findAll({});
   return res.status(200).send({ message: "Success!", likes });
 });
 /* 
