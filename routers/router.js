@@ -11,6 +11,26 @@ router.get("/pets", async (req, res) => {
   let pets = await Pet.findAll({ include: [Photo] });
   return res.status(200).send({ message: "Success!", pets });
 });
+router.post("/pets", async (req, res) => {
+  const { name, imageUrl, gender, age, species } = req.body;
+
+  if (!name || !imageUrl || !gender || !age || species) {
+    return res.status(400).send({ message: "Bad request" });
+  }
+
+  const pet = await Pet.create({
+    name: name,
+    imageUrl: imageUrl,
+    gender: gender,
+    age: age,
+    species: species,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    userId: req.user.id,
+  });
+
+  return res.status(201).send({ message: "Success!", pet });
+});
 
 router.get("/likes", async (req, res) => {
   let likes = await Like.findAll({});
