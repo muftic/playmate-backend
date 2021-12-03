@@ -29,6 +29,18 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          url: "https://res.cloudinary.com/muftic/image/upload/v1638527257/TinPet/Lovely-Pet-Dog-Dress-French-Bulldog-Skirt-Summer-Clothes-For-Small-Medium-Dogs-Puppy-Chihuahua-Yorkie_mv8qw7.webp",
+          petId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          url: "https://res.cloudinary.com/muftic/image/upload/v1638541944/TinPet/20170301-DoggyDiarrhea_1200x630_yfrrnb.jpg",
+          petId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
