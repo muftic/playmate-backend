@@ -11,7 +11,7 @@ router.get("/pets", async (req, res) => {
   let pets = await Pet.findAll({ include: [Photo] });
   return res.status(200).send({ message: "Success!", pets });
 });
-router.post("/pets", async (req, res) => {
+router.post("/pets", auth, async (req, res) => {
   const { name, imageUrl, gender, age, species } = req.body;
 
   if (!name || !imageUrl || !gender || !age || species) {
