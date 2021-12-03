@@ -7,10 +7,18 @@ const Like = require("../models").like;
 const router = new Router();
 const auth = require("../auth/middleware");
 
+router.get("/pet/:id", async (req, res) => {
+  const { id } = req.params;
+  let pet = await Pet.findByPk(id, {});
+  let receivedLikes = await Like.findAll({ where: { receiverId: id } });
+  return res.status(200).send({ message: "Success!", pet, receivedLikes });
+});
+
 router.get("/pets", async (req, res) => {
   let pets = await Pet.findAll({ include: [Photo] });
   return res.status(200).send({ message: "Success!", pets });
 });
+
 router.post("/pets", async (req, res) => {
   const { name, imageUrl, gender, age, species } = req.body;
 
