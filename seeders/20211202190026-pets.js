@@ -53,6 +53,22 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "Babby",
+          age: 66,
+          gender: "male",
+          species: "Cat",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Shabby",
+          age: 8,
+          gender: "male",
+          species: "Dog",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

@@ -37,13 +37,13 @@ module.exports = {
         },
         {
           url: "https://res.cloudinary.com/muftic/image/upload/v1638527257/TinPet/grumpy_cat_ynk8pm.jpg",
-          petId: 5,
+          petId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           url: "https://res.cloudinary.com/muftic/image/upload/v1638527257/TinPet/grumpy_cat_ynk8pm.jpg",
-          petId: 6,
+          petId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
