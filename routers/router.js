@@ -37,6 +37,23 @@ router.get("/likes", async (req, res) => {
   return res.status(200).send({ message: "Success!", likes });
 });
 
+router.post("/likes", async (req, res) => {
+  const { giverId, receiverId, type } = req.body;
+
+  if (!giverId || !receiverId || !type) {
+    return res.status(400).send({ message: "Bad request" });
+  }
+
+  const like = await Like.create({
+    giverId: giverId,
+    receiverId: receiverId,
+    type: type,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  });
+
+  return res.status(201).send({ message: "Success!", like });
+});
 /* 
 include: [
       {
