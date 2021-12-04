@@ -34,7 +34,7 @@ router.post("/pets", async (req, res) => {
     species: species,
     createdAt: new Date(),
     updatedAt: new Date(),
-    //userId: req.user.id,
+    // userId: req.user.id,
   });
 
   return res.status(201).send({ message: "Success!", pet });
@@ -61,6 +61,19 @@ router.post("/likes", async (req, res) => {
   });
 
   return res.status(201).send({ message: "Success!", like });
+});
+
+router.post("/photos", async (req, res) => {
+  const { url } = req.body;
+
+  const photo = await Photo.create({
+    url: url,
+
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  });
+
+  return res.status(201).send({ message: "Success!", photo });
 });
 /* 
 include: [
