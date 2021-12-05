@@ -22,9 +22,9 @@ router.get("/pets", async (req, res) => {
 router.post("/pets", async (req, res) => {
   const { name, imageUrl, gender, age, species } = req.body;
 
-  /*   if (!name || !imageUrl || !gender || !age || species) {
+  if (!name || !imageUrl || !gender || !age || species) {
     return res.status(400).send({ message: "Bad request" });
-  } */
+  }
 
   const pet = await Pet.create({
     name: name,
@@ -34,7 +34,7 @@ router.post("/pets", async (req, res) => {
     species: species,
     createdAt: new Date(),
     updatedAt: new Date(),
-    // userId: req.user.id,
+    userId: req.user.id,
   });
 
   return res.status(201).send({ message: "Success!", pet });
@@ -66,6 +66,9 @@ router.post("/likes", async (req, res) => {
 router.post("/photos", async (req, res) => {
   const { url } = req.body;
 
+  if (!url) {
+    return res.status(400).send({ message: "Bad request" });
+  }
   const photo = await Photo.create({
     url: url,
 
@@ -75,13 +78,5 @@ router.post("/photos", async (req, res) => {
 
   return res.status(201).send({ message: "Success!", photo });
 });
-/* 
-include: [
-      {
-        model: Pet,
-        as: `receiver`,
-      },
-    ],
-*/
 
 module.exports = router;
