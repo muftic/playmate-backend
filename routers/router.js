@@ -78,5 +78,25 @@ router.post("/photos", async (req, res) => {
 
   return res.status(201).send({ message: "Success!", photo });
 });
+/* router.delete("/photos", async (req, res) => {
+  let deleted = await Photo.findAll({});
+  return res.status(200).send({ message: "Success!", likes });
+}); */
+
+router.patch("/myProfile/", auth, async (req, res) => {
+  const { id } = req.user.id;
+
+  const user = await User.findByPk(id);
+
+  if (u === null) {
+    return res.status(404).send({ message: "Artwork not found" });
+  }
+
+  const { location } = req.body;
+
+  await user.update({ location: location });
+
+  res.status(200).send({ message: "Success!", user });
+});
 
 module.exports = router;
