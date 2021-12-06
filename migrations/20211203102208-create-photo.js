@@ -11,14 +11,14 @@ module.exports = {
       url: {
         type: Sequelize.STRING,
       },
-      petId: {
+      userId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "pets",
+          model: "users",
           key: "id",
         },
+        onDelete: "CASCADE",
         onUpdate: "CASCADE",
-        onDelete: "SET NULL",
       },
       createdAt: {
         allowNull: false,

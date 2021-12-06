@@ -11,7 +11,7 @@ router.get("/pet/:id", async (req, res) => {
   const { id } = req.params;
   let pet = await Pet.findByPk(id);
   let receivedLikes = await Like.findAll({ where: { receiverId: id } });
-  return res.status(200).send({ message: "Success!", pet, receivedLikes });
+  return res.status(200).send({ message: "Success!", receivedLikes });
 });
 
 router.get("/pets", async (req, res) => {
