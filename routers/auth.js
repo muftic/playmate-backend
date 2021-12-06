@@ -4,7 +4,7 @@ const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
 const User = require("../models/").user;
 const { SALT_ROUNDS } = require("../config/constants");
-
+const Pet = require("../models/").pet;
 const router = new Router();
 
 router.post("/login", async (req, res, next) => {
@@ -17,7 +17,7 @@ router.post("/login", async (req, res, next) => {
         .send({ message: "Please provide both email and password" });
     }
 
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ where: { email }, include: [Pet] });
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.status(400).send({
@@ -27,7 +27,7 @@ router.post("/login", async (req, res, next) => {
 
     delete user.dataValues["password"]; // don't send back the password hash
     const token = toJWT({ userId: user.id });
-    return res.status(200).send({ token, ...user.dataValues });
+    return res.status(200).send({ token, ...user.dataValues, user });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: "Something went wrong, sorry" });
