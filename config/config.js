@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 module.exports = {
   development: {
     url: "postgres://oluiofhs:9WT9ENVZaRQDSlS6fYMCJ1UUWtJUN-nD@abul.db.elephantsql.com/oluiofhs",
