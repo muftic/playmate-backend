@@ -77,13 +77,14 @@ router.post("/likes", async (req, res) => {
 });
 
 router.post("/photos", async (req, res) => {
-  const { url } = req.body;
+  const { imageUrl, petId } = req.body;
 
-  if (!url) {
+  /*  if (!url) {
     return res.status(400).send({ message: "Bad request" });
-  }
+  } */
   const photo = await Photo.create({
-    url: url,
+    url: imageUrl,
+    petId: petId,
 
     createdAt: new Date(),
     updatedAt: new Date(),
