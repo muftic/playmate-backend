@@ -11,7 +11,7 @@ router.get("/pet/:id", async (req, res) => {
   const { id } = req.params;
   let pet = await Pet.findByPk(id);
   let receivedLikes = await Like.findAll({ where: { receiverId: id } });
-  return res.status(200).send({ message: "Success!", receivedLikes });
+  return res.status(200).send({ message: "Success!", pet });
 });
 
 router.get("/pets", async (req, res) => {
@@ -47,20 +47,31 @@ router.get("/likes", async (req, res) => {
 });
 
 router.post("/likes", async (req, res) => {
-  const { giverId, receiverId, type } = req.body;
-  console.log("A VER Moria!", giverId, receiverId, type);
+  try {
+    const { type } = req.body;
+    const giverId = parseInt(req.body.giverId);
+    const receiverId = parseInt(req.body.receiverId);
+    console.log(
+      `type of giverId: ${typeof giverId}, type of receiverId: ${typeof receiverId}`
+    );
 
-  if (!giverId || !receiverId || !type) {
-    return res.status(400).send({ message: "Bad request" });
+    if (!giverId || !receiverId || !type) {
+      return res.status(400).send({ message: "Bad request" });
+    }
+
+    const like = await Like.create({
+      giverId: parseInt(giverId),
+      receiverId: parseInt(receiverId),
+      type: type,
+    });
+    let match = await Like.findOne({
+      where: { giverId: receiverId, receiverId: giverId },
+    });
+    return res.status(201).send({ message: "Success!", like, match });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Something went wrong, sorry" });
   }
-
-  const like = await Like.create({
-    giverId: giverId,
-    receiverId: receiverId,
-    type: type,
-  });
-
-  return res.status(201).send({ message: "Success!", like });
 });
 
 router.post("/photos", async (req, res) => {
