@@ -16,7 +16,7 @@ router.get("/pet/:id", async (req, res) => {
 
 router.get("/pets", async (req, res) => {
   console.log("dentro del enpoint /pets");
-  let pets = await Pet.findAll({ include: [Photo] });
+  let pets = await Pet.findAll();
   return res.status(200).send({ message: "Success!", pets });
 });
 
@@ -67,7 +67,9 @@ router.post("/likes", async (req, res) => {
     let match = await Like.findOne({
       where: { giverId: receiverId, receiverId: giverId },
     });
-    return res.status(201).send({ message: "Success!", like, match });
+    return res
+      .status(201)
+      .send({ message: "Success!", like, matchedPet: match.id });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: "Something went wrong, sorry" });

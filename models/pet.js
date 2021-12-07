@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       pet.belongsTo(models.user);
-
+      pet.hasMany(models.photo);
       pet.belongsToMany(models.pet, {
         through: "likes",
         foreignKey: "giverId",
