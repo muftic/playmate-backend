@@ -25,7 +25,7 @@ router.post("/login", async (req, res, next) => {
       });
     }
 
-    delete user.dataValues["password"]; // don't send back the password hash
+    //delete user.dataValues["password"]; // don't send back the password hash
     const token = toJWT({ userId: user.id });
     return res.status(200).send({ token, ...user.dataValues });
   } catch (error) {
@@ -43,12 +43,12 @@ router.post("/signup", async (req, res) => {
   try {
     const newUser = await User.create({
       email,
-      password: bcrypt.hashSync(password, SALT_ROUNDS),
+      password: password,
       userName,
     });
 
     console.log("we are here", email, password, userName);
-    delete newUser.dataValues["password"]; // don't send back the password hash
+    //delete newUser.dataValues["password"]; // don't send back the password hash
 
     const token = toJWT({ userId: newUser.id });
 

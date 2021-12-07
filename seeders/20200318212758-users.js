@@ -10,7 +10,7 @@ module.exports = {
         {
           userName: "Martina",
           email: "test@test.com",
-          password: bcrypt.hashSync("test1234", SALT_ROUNDS),
+          password: "test1234",
           location: "Amsterdam",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -18,7 +18,7 @@ module.exports = {
         {
           userName: "Luis",
           email: "a@a.com",
-          password: bcrypt.hashSync("a", SALT_ROUNDS),
+          password: "a",
           location: "Amsterdam",
           createdAt: new Date(),
           updatedAt: new Date(),
