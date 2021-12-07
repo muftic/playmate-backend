@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       user.hasMany(models.pet);
-      user.hasMany(models.photo);
     }
   }
   user.init(
@@ -29,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       location: {
+        type: DataTypes.STRING,
+      },
+      imageUrl: {
         type: DataTypes.STRING,
       },
     },
