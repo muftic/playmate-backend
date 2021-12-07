@@ -16,7 +16,7 @@ router.get("/pet/:id", async (req, res) => {
 
 router.get("/pets", async (req, res) => {
   console.log("dentro del enpoint /pets");
-  let pets = await Pet.findAll();
+  let pets = await Pet.findAll({ include: [Photo] });
   return res.status(200).send({ message: "Success!", pets });
 });
 
