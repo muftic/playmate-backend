@@ -12,11 +12,13 @@ module.exports = (sequelize, DataTypes) => {
 
       pet.belongsToMany(models.pet, {
         through: "likes",
-        as: "giverId",
+        foreignKey: "giverId",
+        as: "giver",
       });
       pet.belongsToMany(models.pet, {
         through: "likes",
-        as: "receiverId",
+        foreignKey: "receiverId",
+        as: "receiver",
       });
     }
   }

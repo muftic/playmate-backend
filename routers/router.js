@@ -15,6 +15,7 @@ router.get("/pet/:id", async (req, res) => {
 });
 
 router.get("/pets", async (req, res) => {
+  console.log("dentro del enpoint /pets");
   let pets = await Pet.findAll({ include: [Photo] });
   return res.status(200).send({ message: "Success!", pets });
 });
@@ -47,6 +48,7 @@ router.get("/likes", async (req, res) => {
 
 router.post("/likes", async (req, res) => {
   const { giverId, receiverId, type } = req.body;
+  console.log("A VER Moria!", giverId, receiverId, type);
 
   if (!giverId || !receiverId || !type) {
     return res.status(400).send({ message: "Bad request" });
@@ -56,8 +58,6 @@ router.post("/likes", async (req, res) => {
     giverId: giverId,
     receiverId: receiverId,
     type: type,
-    createdAt: new Date(),
-    updatedAt: new Date(),
   });
 
   return res.status(201).send({ message: "Success!", like });

@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       like.belongsTo(models.pet, {
-        through: "likes",
+        foreignKey: "giverId",
         as: "giver",
       });
-      like.belongsTo(models.pet, {
-        through: "likes",
+      this.belongsTo(models.pet, {
+        foreignKey: "receiverId",
         as: "receiver",
       });
     }
